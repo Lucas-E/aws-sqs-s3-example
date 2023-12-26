@@ -11,14 +11,15 @@ import { sqsClient, sqsInstance } from "../services/aws-sqs-service";
 import { s3Instance } from "../services/aws-s3-service";
 import { SQSClient } from "@aws-sdk/client-sqs";
 import { SendMessageCommand } from "@aws-sdk/client-sqs";
+import { IUserService } from "./Iuser.service";
 
-export class UserService {
+export class UserService implements IUserService {
   private userRepository: Repository<User>;
   private s3Instance;
   private sqsInstance:SQSClient;
 
-  constructor() {
-    this.userRepository = AppDataSource.getRepository(User);
+  constructor(userRepository:Repository<User>, s3Instance:any, sqsInstance:any) {
+    this.userRepository = userRepository;
     this.s3Instance = s3Instance;
     this.sqsInstance = sqsInstance;
   }
@@ -99,4 +100,4 @@ export class UserService {
   }
 }
 
-export const userService = new UserService();
+export const userService = new UserService(AppDataSource.getRepository(User), s3Instance, sqsInstance);

@@ -4,11 +4,13 @@ import { Repository } from "typeorm";
 import { User } from "../entity/User";
 import { AppDataSource } from "../data-source";
 import "dotenv/config";
+import { IAuthService } from "./Iauth.service";
 
-export class AuthService {
+export class AuthService implements IAuthService {
   private userRepository: Repository<User>;
-  constructor() {
-    this.userRepository = AppDataSource.getRepository(User);
+  
+  constructor(userRepository:Repository<User>) {
+    this.userRepository = userRepository;
   }
   public async authenticate(email, password) {
     try {
@@ -41,4 +43,4 @@ export class AuthService {
   }
 }
 
-export const authService = new AuthService;
+export const authService = new AuthService(AppDataSource.getRepository(User));
