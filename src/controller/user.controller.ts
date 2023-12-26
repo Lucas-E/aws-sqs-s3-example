@@ -1,10 +1,11 @@
 import { Request, Response } from "express"
 import { UserService, userService } from "../service/user.service"
 import { NextFunction } from "express"
+import { IUserController } from "./Iuser.controller"
 
-export class UserController{
+export class UserController implements IUserController{
     private userService:UserService
-    constructor(){
+    constructor(userService:UserService){
         this.userService = userService
     }
     public async createUser(req:Request, res:Response, next:NextFunction){
@@ -83,4 +84,4 @@ export class UserController{
     }
 }
 
-export const userController = new UserController();
+export const userController = new UserController(userService);

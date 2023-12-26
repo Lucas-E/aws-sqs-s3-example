@@ -1,11 +1,12 @@
 import { AuthService, authService } from "../service/auth.service";
+import { IAuthController } from "./Iauth.controller";
 
-export class AuthController{
+export class AuthController implements IAuthController{
     private authService:AuthService;
-    constructor(){
+    constructor(authService:AuthService){
         this.authService = authService
     }
-    public async authenticate(req, res, next){
+    public async authenticate(req, res){
         try {
             const {email, password} = req.body;
             if(!email || !password){
@@ -21,4 +22,4 @@ export class AuthController{
     }
 }
 
-export const authController = new AuthController;
+export const authController = new AuthController(authService);
