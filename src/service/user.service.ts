@@ -7,7 +7,7 @@ import {
   getSignedUrl
 } from "@aws-sdk/s3-request-presigner";
 import 'dotenv/config'
-import { sqsClient, sqsInstance } from "../services/aws-sqs-service";
+import { sqsInstance } from "../services/aws-sqs-service";
 import { s3Instance } from "../services/aws-s3-service";
 import { SQSClient } from "@aws-sdk/client-sqs";
 import { SendMessageCommand } from "@aws-sdk/client-sqs";
