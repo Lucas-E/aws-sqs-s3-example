@@ -42,5 +42,3 @@ export class AuthService implements IAuthService {
     }
   }
 }
-
-export const authService = new AuthService(AppDataSource.getRepository(User));

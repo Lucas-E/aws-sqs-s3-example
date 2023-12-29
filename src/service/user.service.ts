@@ -99,5 +99,3 @@ export class UserService implements IUserService {
     }
   }
 }
-
-export const userService = new UserService(AppDataSource.getRepository(User), s3Instance, sqsInstance);

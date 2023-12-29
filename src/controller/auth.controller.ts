@@ -1,4 +1,4 @@
-import { AuthService, authService } from "../service/auth.service";
+import { AuthService } from "../service/auth.service";
 import { IAuthController } from "./Iauth.controller";
 
 export class AuthController implements IAuthController{
@@ -21,5 +21,3 @@ export class AuthController implements IAuthController{
         }
     }
 }
-
-export const authController = new AuthController(authService);

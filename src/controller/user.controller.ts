@@ -1,5 +1,5 @@
 import { Request, Response } from "express"
-import { UserService, userService } from "../service/user.service"
+import { UserService } from "../service/user.service"
 import { NextFunction } from "express"
 import { IUserController } from "./Iuser.controller"
 
@@ -83,5 +83,3 @@ export class UserController implements IUserController{
         }
     }
 }
-
-export const userController = new UserController(userService);
