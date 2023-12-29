@@ -8,7 +8,12 @@ import { sqsInstance } from "../services/aws-sqs-service";
 export function userFactory(){
     const userService = new UserService(AppDataSource.getRepository(User), s3Instance, sqsInstance);
     const userController = new UserController(userService);
-    return userController;
+    return {
+        controller: userController,
+        service: userService
+    };
 }
 
-export const userController = userFactory();
+const userLayers = userFactory();
+export const userService = userLayers.service;
+export const userController = userLayers.controller;

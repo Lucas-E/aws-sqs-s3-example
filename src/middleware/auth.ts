@@ -1,5 +1,5 @@
 import { NextFunction, Request, Response } from "express";
-import { userService } from "../service/user.service";
+import { userService } from "../factories/user.factory";
 import jwt from "jsonwebtoken";
 import "dotenv/config";
 
